@@ -1,11 +1,11 @@
 package xaidee.emcompat.mods;
 
 import biomesoplenty.common.util.CreativeModeTabBOP;
-import com.teamaurora.enhanced_mushrooms.core.registry.util.Woodset;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.RegistryObject;
 import xaidee.emcompat.CompatHandler;
+import xaidee.emcompat.Woodset;
 
 import java.util.function.Supplier;
 
@@ -16,7 +16,7 @@ public class DarkerDepths {
     }
 
     // Glowshroom
-    private static final Woodset GLOWSHROOM = new Woodset(MaterialColor.WOOL, MaterialColor.COLOR_CYAN);
+    private static final Woodset GLOWSHROOM = new Woodset(MaterialColor.WOOL, MaterialColor.COLOR_CYAN, 4);
 
     public static final RegistryObject<Block> GLOWSHROOM_STEM = registerBlock("glowshroom_stem", GLOWSHROOM::log);
     public static final RegistryObject<Block> GLOWSHROOM_HYPHAE = registerBlock("glowshroom_hyphae", GLOWSHROOM::wood);
