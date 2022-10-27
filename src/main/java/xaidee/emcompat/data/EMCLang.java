@@ -21,14 +21,22 @@ public class EMCLang extends LanguageProvider {
     @Override
     protected void addTranslations() {
         for (Supplier<? extends Block> block : CompatHandler.BLOCKS.getEntries())
-            putIfAbsent(block);
+            tryBlock(block);
         for (Supplier<? extends Item> item : CompatHandler.ITEMS.getEntries())
-            putIfAbsent(item);
+            tryItem(item);
     }
 
-    private void putIfAbsent(Supplier<? extends ForgeRegistryEntry<?>> registryEntry) {
-        String key = registryEntry.get().getRegistryName().getPath();
-        String value = formatString(key);
+    private void tryBlock(Supplier<? extends Block> registryEntry) {
+        String key = registryEntry.get().getDescriptionId();
+        String value = formatString(ForgeRegistries.BLOCKS.getKey(registryEntry.get()).getPath());
+        try {
+            add(key, value);
+        } catch (Exception ignored) {}
+    }
+
+    private void tryItem(Supplier<? extends Item> registryEntry) {
+        String key = registryEntry.get().getDescriptionId();
+        String value = formatString(ForgeRegistries.ITEMS.getKey(registryEntry.get()).getPath());
         try {
             add(key, value);
         } catch (Exception ignored) {}
@@ -38,6 +46,10 @@ public class EMCLang extends LanguageProvider {
         String[] strArr = key.split("_");
         StringBuffer res = new StringBuffer();
         for (String str : strArr) {
+            if (str.contains("/")) {
+                String[] strArr2 = str.split("/");
+                str = strArr2[strArr2.length  - 1];
+            }
             char[] stringArray = str.trim().toCharArray();
             stringArray[0] = Character.toUpperCase(stringArray[0]);
             str = new String(stringArray);

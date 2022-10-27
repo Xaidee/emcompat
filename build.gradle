@@ -103,8 +103,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:farmers-delight-398521:3999153")
     runtimeOnly fg.deobf("curse.maven:farmers-delight-398521:3999153")
 
-    compileOnly fg.deobf("curse.maven:biomes-o-plenty-220318:3759236")
-    runtimeOnly fg.deobf("curse.maven:biomes-o-plenty-220318:3759236")
+    compileOnly fg.deobf("curse.maven:biomes-o-plenty-220318:3827434")
+    runtimeOnly fg.deobf("curse.maven:biomes-o-plenty-220318:3827434")
     runtimeOnly fg.deobf("curse.maven:terrablender-563928:3957976")
 
     compileOnly fg.deobf("curse.maven:darker-depths-460681:3888100")
